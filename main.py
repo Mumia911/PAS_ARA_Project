@@ -7,8 +7,7 @@ from Application import Application
 if __name__ == "__main__":
 
 # tworzenie instancji użytkownika
-    user = User(id=1, login="example_user", email="user@example.com", is_admin=False, password="password", logged=False)
-
+    user = User(1, "example_user", "user@example.com", True, "password", False)
 # logowanie użytkownika
     login_manager = UserLogin()
     print(login_manager.login(user))
@@ -26,9 +25,7 @@ if __name__ == "__main__":
 
 # ustanowienie połączenia z bazą danych
     if db_connection.connection(APIkey, username, password):
-        # Utworzenie instancji żądań do bazy danych
-        Application.add_entry(1)  # Poprawiony sposób tworzenia instancji Application
-        # Dodanie wpisu do bazy danych
+        Application.add_entry(1, user)
         print("Entry added to the database.")
     else:
         print("Failed to establish connection to the database.")
